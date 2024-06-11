@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput, Text, TouchableOpacity, FlatList, StatusBar } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
 import WishlistScreen from './screens/WishlistScreen';
-import QRCodeScreen from './screens/QRCode';
+import QRCodeScreen from './screens/QRCodeScreen';
 import RewardsScreen from './screens/RewardsScreen';
 import InfoScreen from './screens/InfoScreen';
 
@@ -22,19 +22,20 @@ function MainTabs() {
           let iconName;
 
           if (route.name === 'Home') {
-            iconName = focused ? 'ios-home' : 'ios-home-outline';
+            iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Wishlist') {
-            iconName = focused ? 'ios-list' : 'ios-list-outline';
+            iconName = focused ? 'list' : 'list-outline';
           } else if (route.name === 'QRCodeScanner') {
-            iconName = focused ? 'ios-qr-code' : 'ios-qr-code-outline';
+            iconName = focused ? 'qr-code' : 'qr-code-outline';
           } else if (route.name === 'Rewards') {
-            iconName = focused ? 'ios-trophy' : 'ios-trophy-outline';
+            iconName = focused ? 'trophy' : 'trophy-outline';
           } else if (route.name === 'Info') {
-            iconName = focused ? 'ios-information' : 'ios-information-outline';
+            iconName = focused ? 'information-circle' : 'information-circle-outline';
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
+
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: { backgroundColor: '#E9EDC9' },
