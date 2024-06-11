@@ -11,8 +11,8 @@ import QRCodeScreen from './screens/QRCodeScreen';
 import RewardsScreen from './screens/RewardsScreen';
 import InfoScreen from './screens/InfoScreen';
 
-const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 function MainTabs() {
   return (
@@ -34,32 +34,35 @@ function MainTabs() {
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
-        },
 
+        },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: { backgroundColor: '#E9EDC9' },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Wishlist" component={WishlistScreen} />
-      <Tab.Screen name="QRCodeScanner" component={QRCodeScreen} />
-      <Tab.Screen name="Rewards" component={RewardsScreen} />
-      <Tab.Screen name="Info" component={InfoScreen} />
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Wishlist" component={WishlistScreen} />
+        <Stack.Screen name="QRCode" component={QRCodeScreen} />
+        <Stack.Screen name="Rewards" component={RewardsScreen} />
+        <Stack.Screen name="Info" component={InfoScreen} />
+      </Tab.Navigator>
     </Tab.Navigator>
   );
-}
+};
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

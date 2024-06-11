@@ -4,13 +4,13 @@ import SegmentedControl from '@react-native-segmented-control/segmented-control'
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const placesData = [
-    { id: '1', title: 'Halomi', rating: 4.5, price: '$$', image: 'https://example.com/image1.png' },
-    { id: '2', title: 'By Invite Only', rating: 4.0, price: '$$', image: 'https://example.com/image2.png' },
-    { id: '3', title: 'Step of Grace', rating: 4.2, price: '$$$', image: 'https://example.com/image3.png' },
+    { id: '1', title: 'Haikini', rating: 4.5, price: '$$', image: require('../screens/assets/haikini.png') },
+    { id: '2', title: 'By Invite Only', rating: 4.0, price: '$$', image: require('../screens/assets/byinviteonly.png') },
+    { id: '3', title: 'Step of Grace', rating: 4.2, price: '$$$', image: require('../screens/assets/stepofgrace.png') },
     // Add more items as needed
 ];
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) { // Added navigation prop
     const [searchText, setSearchText] = useState('');
     const [filteredData, setFilteredData] = useState(placesData);
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -33,15 +33,20 @@ export default function HomeScreen() {
         }
     };
 
+    const handlePress = (item) => {
+        // Navigate to a detail screen or perform another action
+        navigation.navigate('Stores', { screen: 'StoreDetails', params: { storeId: '1', storeName: 'Haikini' } });
+    };
+
     const renderItem = ({ item }) => (
-        <View style={styles.item}>
-            <Image source={{ uri: item.image }} style={styles.itemImage} />
+        <TouchableOpacity style={styles.item} onPress={() => handlePress(item)}>
+            <Image source={item.image} style={styles.itemImage} />
             <View style={styles.itemInfo}>
                 <Text style={styles.itemTitle}>{item.title}</Text>
                 <Text style={styles.itemRating}>Rating: {item.rating} ★</Text>
                 <Text style={styles.itemPrice}>{item.price}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 
     return (
@@ -58,13 +63,14 @@ export default function HomeScreen() {
                 </TouchableOpacity>
             </View>
             <SegmentedControl
-                values={['Open Places', 'Explore Clubs']}
+                values={['Stores we Love', 'Browse all stores']}
                 selectedIndex={selectedIndex}
                 onChange={(event) => {
                     setSelectedIndex(event.nativeEvent.selectedSegmentIndex);
                 }}
                 style={styles.segmentedControl}
             />
+            {/* Move FlatList outside of the header container */}
             <FlatList
                 data={filteredData}
                 renderItem={renderItem}
@@ -78,7 +84,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#f5f5f5',
+        backgroundColor: '#CCD5AE',
     },
     searchContainer: {
         flexDirection: 'row',
@@ -105,19 +111,16 @@ const styles = StyleSheet.create({
     },
     item: {
         flexDirection: 'row',
+        height: 110,
         padding: 10,
         marginVertical: 5,
-        backgroundColor: '#fff',
+        backgroundColor: '#CCD5AE',
         borderRadius: 5,
-        shadowColor: '#000',
-        shadowOpacity: 0.1,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 5,
-        elevation: 2,
+        top: 30,
     },
     itemImage: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: 100,
         borderRadius: 25,
         marginRight: 10,
     },
