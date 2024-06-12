@@ -5,7 +5,7 @@ import { ProgressBar } from 'react-native-paper';
 
 
 
-export default function HaikiniDetailsScreen() {
+export default function HaikiniScreen() {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Image style={styles.logo} />

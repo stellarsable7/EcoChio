@@ -10,9 +10,9 @@ import WishlistScreen from './screens/WishlistScreen';
 import QRCodeScreen from './screens/QRCodeScreen';
 import RewardsScreen from './screens/RewardsScreen';
 import InfoScreen from './screens/InfoScreen';
-import HaikiniDetailsScreen from './screens/HaikiniDetailsScreen';
 import ByInviteOnlyScreen from './screens/ByInviteOnlyScreen';
 import StepofGraceScreen from './screens/StepofGraceScreen';
+import HaikiniScreen from './screens/HaikiniScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -58,7 +58,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
-        <Stack.Screen name="Haikini" component={HaikiniDetailsScreen} />
+        <Stack.Screen name="Haikini" component={HaikiniScreen} />
         <Stack.Screen name="By Invite Only" component={ByInviteOnlyScreen} />
         <Stack.Screen name="Step of Grace" component={StepofGraceScreen} />
       </Stack.Navigator>
