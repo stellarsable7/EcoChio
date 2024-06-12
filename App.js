@@ -13,6 +13,10 @@ import InfoScreen from './screens/InfoScreen';
 import ByInviteOnlyScreen from './screens/ByInviteOnlyScreen';
 import StepofGraceScreen from './screens/StepofGraceScreen';
 import HaikiniScreen from './screens/HaikiniScreen';
+import UniqloScreen from './screens/UniqloScreen';
+import MGPScreen from './screens/MGPScreen';
+import SHEINScreen from './screens/SHEINScreen';
+import CottonOnScreen from './screens/CottonOnScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -61,6 +65,10 @@ export default function App() {
         <Stack.Screen name="Haikini" component={HaikiniScreen} />
         <Stack.Screen name="By Invite Only" component={ByInviteOnlyScreen} />
         <Stack.Screen name="Step of Grace" component={StepofGraceScreen} />
+        <Stack.Screen name="Uniqlo" component={UniqloScreen} />
+        <Stack.Screen name="MGP Label" component={MGPScreen} />
+        <Stack.Screen name="Cotton On" component={CottonOnScreen} />
+        <Stack.Screen name="SHEIN" component={SHEINScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
