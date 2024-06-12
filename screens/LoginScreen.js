@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, SafeAreaView, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image, SafeAreaView } from 'react-native';
 
 export default function LoginScreen({ navigation }) {
     return (
@@ -18,7 +18,9 @@ export default function LoginScreen({ navigation }) {
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Create Account</Text>
                 </TouchableOpacity>
-                <Button title="Sign In" style={styles.button} onPress={() => navigation.navigate("HomeScreen")} />
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("MainTabs")}>
+                    <Text style={styles.buttonText}>Sign In</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );

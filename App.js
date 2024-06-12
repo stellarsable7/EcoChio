@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -10,6 +10,9 @@ import WishlistScreen from './screens/WishlistScreen';
 import QRCodeScreen from './screens/QRCodeScreen';
 import RewardsScreen from './screens/RewardsScreen';
 import InfoScreen from './screens/InfoScreen';
+import HaikiniDetailsScreen from './screens/HaikiniDetailsScreen';
+import ByInviteOnlyScreen from './screens/ByInviteOnlyScreen';
+import StepofGraceScreen from './screens/StepofGraceScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -34,20 +37,17 @@ function MainTabs() {
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
-
         },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: { backgroundColor: '#E9EDC9' },
       })}
     >
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Wishlist" component={WishlistScreen} />
-        <Stack.Screen name="QRCode" component={QRCodeScreen} />
-        <Stack.Screen name="Rewards" component={RewardsScreen} />
-        <Stack.Screen name="Info" component={InfoScreen} />
-      </Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Wishlist" component={WishlistScreen} />
+      <Tab.Screen name="QRCodeScanner" component={QRCodeScreen} />
+      <Tab.Screen name="Rewards" component={RewardsScreen} />
+      <Tab.Screen name="Info" component={InfoScreen} />
     </Tab.Navigator>
   );
 };
@@ -58,11 +58,13 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
+        <Stack.Screen name="Haikini" component={HaikiniDetailsScreen} />
+        <Stack.Screen name="By Invite Only" component={ByInviteOnlyScreen} />
+        <Stack.Screen name="Step of Grace" component={StepofGraceScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

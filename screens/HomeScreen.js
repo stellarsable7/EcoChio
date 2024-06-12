@@ -10,13 +10,29 @@ const placesData = [
     // Add more items as needed
 ];
 
-export default function HomeScreen({ navigation }) { // Added navigation prop
+export default function HomeScreen({ navigation }) {
+    const handlePress = (item) => {
+        switch (item.title) {
+            case 'Haikini':
+                navigation.navigate('Haikini', { storeId: item.id, storeName: item.title });
+                break;
+            case 'By Invite Only':
+                navigation.navigate('By Invite Only', { storeId: item.id, storeName: item.title });
+                break;
+            case 'Step of Grace':
+                navigation.navigate('Step of Grace', { storeId: item.id, storeName: item.title });
+                break;
+            default:
+                break;
+        }
+    };
+
     const [searchText, setSearchText] = useState('');
     const [filteredData, setFilteredData] = useState(placesData);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
     useEffect(() => {
-        handleSearch(searchText); // Filter the list when the component mounts or when searchText changes
+        handleSearch(searchText);
     }, [searchText]);
 
     const handleSearch = (text) => {
@@ -33,10 +49,8 @@ export default function HomeScreen({ navigation }) { // Added navigation prop
         }
     };
 
-    const handlePress = (item) => {
-        // Navigate to a detail screen or perform another action
-        navigation.navigate('Stores', { screen: 'StoreDetails', params: { storeId: '1', storeName: 'Haikini' } });
-    };
+
+
 
     const renderItem = ({ item }) => (
         <TouchableOpacity style={styles.item} onPress={() => handlePress(item)}>
@@ -70,7 +84,6 @@ export default function HomeScreen({ navigation }) { // Added navigation prop
                 }}
                 style={styles.segmentedControl}
             />
-            {/* Move FlatList outside of the header container */}
             <FlatList
                 data={filteredData}
                 renderItem={renderItem}
